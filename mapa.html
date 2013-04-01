@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Pneu Servis Brandýs - Mapa</title>
+	<link href="styles/default.css" rel="stylesheet" type="text/css" />
+	<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAKs-YFbBPd2reQjM7PCI15xSQOYe5Tl4jSbNaTW4vfywiXnN2IRT_zaXkQh0euxJzcBZKRVPXNvSI1g" type="text/javascript"></script> 
+	<script type="text/javascript">
+	
+		var map = null;
+		var geocoder = null;
+	 
+		function initialize() {
+		  if (GBrowserIsCompatible()) {
+			map = new GMap2(document.getElementById("map_canvas"));
+			map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+			map.addControl(new GSmallMapControl());
+			map.addControl(new GMapTypeControl());			
+			geocoder = new GClientGeocoder();
+			showAddress("Královická 471/26, Brandýs n/L 250 01, Czech Republic");
+		  }
+		}
+	 
+		function showAddress(address) {
+		  if (geocoder) {
+			geocoder.getLatLng(
+			  address,
+			  function(point) {
+				if (!point) {
+				  alert(address + " not found");
+				} else {
+				  map.setCenter(point, 13);
+				  var marker = new GMarker(point);
+				  map.addOverlay(marker);
+				  marker.openInfoWindowHtml("<strong>Pneu Servis Brandýs</strong><br />Královická 471/26<br />250 01 &nbsp;Brandýs n/L");
+				}
+			  }
+			);
+		  }
+		}
+		
+	</script>
+</head>
+<body onload="initialize()" onunload="GUnload()">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="shadow_left">&nbsp;</td>
+    <td class="header_column">
+	<table width="100%" border="0" cellspacing="10" cellpadding="0">
+      <tr>
+        <td class="logo_area">Pneu Servis Brandýs</td>
+      </tr>
+    </table></td>
+    <td class="shadow_right">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="horizontal_column">&nbsp;</td>
+    <td class="horizontal_center"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="linkcontainer">
+      <tr>
+        <td><div class="navigation"><a href="index.html" class="main_link">Hlavní stránka</a></div></td>
+		<td><div class="navigation"><a href="mapa.html" class="main_link">Mapa</a></div></td>
+      </tr>
+    </table></td>
+    <td class="horizontal_column">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="shadow_left">&nbsp;</td>
+    <td class="below_header"></td>
+    <td class="shadow_right">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="shadow_left">&nbsp;</td>
+    <td class="main_content_box">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="left_content">
+					<img src="images/wheel.png" width="200" height="200" alt="" /><br />
+					<div class="left-section">
+						Pavel Tlapák<br />
+						Královická 471/26<br />
+						Brandýs n/L<br />
+						250 01<br />	
+					</div>	
+					<div class="left-section">
+						<strong>Kontakt</strong><br />
+						+420 736 539 251<br />
+						<a href="mailto:pneu-brandys@seznam.cz">pneu-brandys@seznam.cz</a>
+					</div>	
+					<div class="left-section">
+						<strong>Provozní hodiny</strong><br />
+						Pondělí - Neděle<br />
+						dle telefonické domluvy
+					</div>			
+				</td>
+				<td class="body_content">
+					<div id="map_canvas" style="height: 580px; width: 90%; border: 1px solid #CCCCCC; margin: auto;"></div>
+				</td>
+			</tr>
+		</table>
+	</td>
+    <td class="shadow_right">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="shadow_left">&nbsp;</td>
+    <td class="middle_spacer"></td>
+    <td class="shadow_right">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="shadow_left">&nbsp;</td>
+    <td class="bottom_link_container">
+		<br />
+		<p>All Right Reserved &copy; 2009 Pavel Tlapák</p>
+		<p>IČO 15358151 &sdot; DIČ CZ6605010280</p>
+		<br />
+	</td>
+    <td class="shadow_right">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
